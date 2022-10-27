@@ -90,11 +90,14 @@ public class RegisterExistingUser {
         WebElement alertText = driver.findElement(By.xpath("(//div[@role='alert'])[1]"));
         String alertGettext = alertText.getText();
 
-        boolean checkText = alertGettext.contains("An account with this information already exists.");
+        boolean checkTextall = alertGettext.contains("An account with this information already exists.");
+        boolean checkTextusername = alertGettext.contains("already exist");
 
-        if (terms.isSelected() && checkText == false) {
+        if (terms.isSelected() && checkTextall == false) {
             driver.findElement(By.xpath("(//button[@id='create-account-submit-btn'])[1]")).click();
-        } else if (terms.isSelected() && checkText == true) {
+        } else if (terms.isSelected() && checkTextall == true) {
+            signInLink.click();
+        } else if (terms.isSelected() && checkTextusername == true) {
             signInLink.click();
         }
 
