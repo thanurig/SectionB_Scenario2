@@ -7,7 +7,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
+/*
+    Automated Test Scenario :
+        New user registration with unique credentials
+        Each run, this program will create unique user credentials for user registration
+*/
 public class RegisterNewUser {
 
 ////////////////////............Home  Page........../////////////////////////////////

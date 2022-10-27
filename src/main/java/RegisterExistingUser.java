@@ -7,7 +7,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
+/* Automated Test Scenario :
+        When user trying to create new account with existing user credentials, program will redirect user to sign in page
+        Then user sign in with existing user credentials
+*/
 public class RegisterExistingUser {
 
     ////////////////////............Home  Page........../////////////////////////////////
@@ -113,9 +116,6 @@ public class RegisterExistingUser {
         }
         driver.quit();
     }
-
-
-
 
 }
 

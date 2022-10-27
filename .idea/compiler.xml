@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ScenarioB_2" />
         <module name="thanuri_automation2" />
+        <module name="SectionB_Scenario2" />
         <module name="ScenarionB_two" />
       </profile>
     </annotationProcessing>
