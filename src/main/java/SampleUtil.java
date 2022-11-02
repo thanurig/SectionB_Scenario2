@@ -5,7 +5,7 @@ import java.util.UUID;
 public class SampleUtil {
 
     /**
-    * Method Generate Time as epoch time to generate unique prefix for username
+    * Method for generate unique prefix for username
     */
     public String generateTime() {
         String timeMilli = String.valueOf(ZonedDateTime.now().toInstant().toEpochMilli());
@@ -13,7 +13,7 @@ public class SampleUtil {
     }
 
     /**
-     * Method for Generate unique prefix for password
+     * Method for Generate unique password
      */
     public String generateString() {
         String uuid = UUID.randomUUID().toString();
