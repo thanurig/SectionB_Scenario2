@@ -17,7 +17,7 @@ public class RegisterExistingUser {
 
     public static void main(String[] args) throws InterruptedException {
 
-        RegisterNewUser newUserAccount=new RegisterNewUser();
+        RegisterNewUser newUserAccount = new RegisterNewUser();
 
         //Initiate Chrome browser using WebDriverManager
         WebDriverManager.chromedriver().setup();
@@ -33,7 +33,7 @@ public class RegisterExistingUser {
 
         WebElement lblReadyForUni;
         lblReadyForUni = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("bcToasterTitle")));
-       // System.out.println(lblReadyForUni.getText());
+        // System.out.println(lblReadyForUni.getText());
 
         // Switch to Iframe
         driver.switchTo().frame(driver.findElement(By.xpath("//*[@id=\"bcAnalytics\"]/div/div[2]/iframe")));
@@ -79,7 +79,7 @@ public class RegisterExistingUser {
         school_inst.sendKeys("I don't see my institution or school.");
 
         //Wait 1 second until the drop-down values are loaded
-            Thread.sleep(1000);
+        Thread.sleep(1000);
         school_inst.sendKeys(Keys.ENTER);
 
         WebElement terms = driver.findElement(By.xpath("(//input[@name='consent'])[1]"));
@@ -93,7 +93,7 @@ public class RegisterExistingUser {
         boolean checkTextall = alertGettext.contains("An account with this information already exists.");
         boolean checkTextusername = alertGettext.contains("Username is already being used.");
 
-       if (terms.isSelected() && checkTextall == true) {
+        if (terms.isSelected() && checkTextall == true) {
             signInLink.click();
         } else if (terms.isSelected() && checkTextusername == true) {
             signInLink.click();
@@ -110,7 +110,7 @@ public class RegisterExistingUser {
         WebElement btnSubmit2 = driver.findElement(By.xpath("(//button[@id='ies-standard-signin-submit'])[1]"));
         btnSubmit2.click();
         //Wait 5 Seconds until the user profile is logged after signing in
-            Thread.sleep(8000);
+        Thread.sleep(8000);
 
         driver.quit();
     }
