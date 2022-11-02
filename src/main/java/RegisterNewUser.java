@@ -16,7 +16,7 @@ public class RegisterNewUser {
 
 ////////////////////............Home  Page........../////////////////////////////////
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         SampleUtil sampleUtil = new SampleUtil();
 
@@ -34,7 +34,7 @@ public class RegisterNewUser {
 
         WebElement lblReadyForUni;
         lblReadyForUni = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("bcToasterTitle")));
-        System.out.println(lblReadyForUni.getText());
+        //System.out.println(lblReadyForUni.getText());
 
         // Switch to Iframe
         driver.switchTo().frame(driver.findElement(By.xpath("//*[@id=\"bcAnalytics\"]/div/div[2]/iframe")));
@@ -66,29 +66,26 @@ public class RegisterNewUser {
 
         //Generate unique firstname
         WebElement inputFirstName = driver.findElement(By.xpath("(//input[@id='ies-field-name-firstname'])[1]"));
-        inputFirstName.sendKeys(sampleUtil.generateTime() + "_Thanuri");
+        inputFirstName.sendKeys("Thanuri");
 
         //Generate unique lastname
         WebElement inputLastName = driver.findElement(By.xpath("//input[@id='ies-field-name-lastname']"));
-        inputLastName.sendKeys(sampleUtil.generateTime() + "_Geeganage");
+        inputLastName.sendKeys("Geeganage");
 
         //Generate unique username
         WebElement inputUserName = driver.findElement(By.xpath("(//input[@id='ies-standard-usernamecreateacct'])[1]"));
-        String userName = sampleUtil.generateTime() +"_thanurig@gmail.com";
+        String userName = sampleUtil.generateTime() + "thanurig@gmail.com";
         inputUserName.sendKeys(userName);
 
         WebElement inputPassword = driver.findElement(By.xpath("(//input[@id='ies-standard-adornment-password-createacct'])[1]"));
-        String password = "ABCD12345";
+        //String password = "ABCD12345";
+        String password = sampleUtil.generateString();
         inputPassword.sendKeys(password);
 
         WebElement school_inst = driver.findElement(By.xpath("(//input[@id='institution-input'])"));
         school_inst.sendKeys("I don't see my institution or school.");
         //Wait 1 second until the drop-down values are loaded
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(1000);
         school_inst.sendKeys(Keys.ENTER);
 
 
@@ -96,16 +93,12 @@ public class RegisterNewUser {
         chBxTerms.click();
 
         WebElement btnCreateAccount;
-        btnCreateAccount = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"create-account-submit-btn\"]/span")));
+        btnCreateAccount = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//button[@id='create-account-submit-btn'])")));
         btnCreateAccount.click();
 
         //Wait 10 seconds until confirmation dialog box appears
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        driver.quit();
 
+        Thread.sleep(8000);
+        driver.quit();
     }
 }

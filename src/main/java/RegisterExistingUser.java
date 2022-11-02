@@ -15,7 +15,9 @@ public class RegisterExistingUser {
 
     ////////////////////............Home  Page........../////////////////////////////////
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+
+        RegisterNewUser newUserAccount=new RegisterNewUser();
 
         //Initiate Chrome browser using WebDriverManager
         WebDriverManager.chromedriver().setup();
@@ -31,7 +33,7 @@ public class RegisterExistingUser {
 
         WebElement lblReadyForUni;
         lblReadyForUni = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("bcToasterTitle")));
-        System.out.println(lblReadyForUni.getText());
+       // System.out.println(lblReadyForUni.getText());
 
         // Switch to Iframe
         driver.switchTo().frame(driver.findElement(By.xpath("//*[@id=\"bcAnalytics\"]/div/div[2]/iframe")));
@@ -39,6 +41,7 @@ public class RegisterExistingUser {
         WebElement txtEmail;
         txtEmail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("tfa_1")));
         txtEmail.sendKeys("thanurig@gmail.com");
+
         WebElement btnSubmit = driver.findElement(By.xpath("//*[@id=\"submit_button\"]"));
         btnSubmit.click();
 
@@ -74,12 +77,9 @@ public class RegisterExistingUser {
 
         WebElement school_inst = driver.findElement(By.xpath("(//input[@id='institution-input'])"));
         school_inst.sendKeys("I don't see my institution or school.");
+
         //Wait 1 second until the drop-down values are loaded
-        try {
             Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         school_inst.sendKeys(Keys.ENTER);
 
         WebElement terms = driver.findElement(By.xpath("(//input[@name='consent'])[1]"));
@@ -91,11 +91,9 @@ public class RegisterExistingUser {
         String alertGettext = alertText.getText();
 
         boolean checkTextall = alertGettext.contains("An account with this information already exists.");
-        boolean checkTextusername = alertGettext.contains("already exist");
+        boolean checkTextusername = alertGettext.contains("Username is already being used.");
 
-        if (terms.isSelected() && checkTextall == false) {
-            driver.findElement(By.xpath("(//button[@id='create-account-submit-btn'])[1]")).click();
-        } else if (terms.isSelected() && checkTextall == true) {
+       if (terms.isSelected() && checkTextall == true) {
             signInLink.click();
         } else if (terms.isSelected() && checkTextusername == true) {
             signInLink.click();
@@ -112,11 +110,8 @@ public class RegisterExistingUser {
         WebElement btnSubmit2 = driver.findElement(By.xpath("(//button[@id='ies-standard-signin-submit'])[1]"));
         btnSubmit2.click();
         //Wait 5 Seconds until the user profile is logged after signing in
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+            Thread.sleep(8000);
+
         driver.quit();
     }
 
